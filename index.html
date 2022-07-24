@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+        <title>Image Caption Generator</title>
+        <link rel="stylesheet" href="./css/caption.css" />   <!--  taking css file    -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="   sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/improve.css" />
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css">
+        <link rel="stylesheet" href="./css/mfb.css" />
+        <script src="./js/mfb.js"></script>
+        <link rel="shortcut icon" href="imag.png">
+        <meta name="theme-color" content="#BE76A8"/>
+        <style type="text/css">
+            
+        
+        .footer {
+   
+   position: static;
+    bottom: 0;
+  left: 0;
+  width: 100%;
+
+  background: #B50639;
+  display: grid;
+  
+  padding: 20px;
+   
+}
+
+        .header {
+            background-color:#B50639;
+            /*padding: 5px;*/
+            height: 40%;
+
+        }
+body {
+
+	background-color: #0A192F;
+	
+}
+
+        
+        </style>
+    </head>
+    <body  >
+
+        
+
+        <div class = "header">
+
+            <table  style="width: 80% border:2px; ">
+    <br>
+  <tr>
+    <td style="padding-left:50px">
+      <p >
+        <img src="ipec.png" height="60%"  width="60%">
+      </a>
+    </p>
+    </td>
+    
+        <td style="align-content: right">
+      <p align="right">
+        &ensp;&ensp;<img src="imag.png" height="20%"  width="20%">
+      </a>
+    </p>
+    <td>
+    
+</tr>
+</table>
+
+        </div>
+
+        <div class="tfjs-example-container container">
+            <section class='title-area'>
+                <br>
+                    <center>
+
+                        <h1 size="9" face="Calibri" style="color:#FFCF70"; ><b>IMAGE CAPTION GENERATOR </b></h1>
+
+                        <p style="color: white " > 
+                            This is a Assistive Vision Technology model based on CNN-LSTM neural networks which automatically detects the objects in the images and generates descriptions for the images.These descriptions are converted to speech  with the help Speech Synthesis Utterance interface of the Web Speech API from which it can be read out loud to the person.
+                        </p>
+
+                
+                    </center>
+
+            </section>
+            <section>
+                <div class="card text-center mt-5 shadow" style="background: #CCD6F6;">
+                    <div class="card-header">
+                        <div id="txt" class="text-dark"></div>
+                        <button class="btn btn-primary bg-transparent border-0 text-dark" type="button" id="spinner" disabled>
+                        <span class="spinner-grow spinner-grow-sm text-danger" role="status" aria-hidden="true"></span>
+                        Getting everythings ready, please wait...
+                        </button>
+                    </div>
+                    <div class="card-body" style="background: #F7F7F7">
+                        <h5 class="card-title text-dark">Upload Your Picture Here</h5>
+                        <div class="button-wrapping">
+                            <button class="btn block mt-3" type="button" style="background-color: #9879e7;border-color: #9879e7">Upload Images                     
+                            </button>
+                            <input type="file" id="imageLoader" name="imageLoader" class="hide_file">
+                        </div>
+                        <canvas id="webgl-canvas" width="1" height="1" ></canvas>
+                        <img class="img-fluid p-3 block shadow" src="" id="image" width="400">
+                        <div class="p-2">
+                            <button class="btn block mt-3" type="button" id="btn" style="background-color: #9879e7;border-color: re">Generate Caption                     
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div id="caption-div">
+                            <h4 class="text-dark">Caption: </h4>
+                            <div id="caption"></div>
+                            <button class="btn block mt-2" type="button" id="btnPlay" style="background-color: #9879e7;border-color: #9879e7">Hear it again!                    
+                            </button>
+                            <div id="spinner-caption" class="d-inline-block">
+                                <span class="spinner-grow spinner-border-sm text-danger" role="status" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+            
+        </div>
+    
+
+
+
+
+
+        
+
+
+
+
+
+
+        
+        <!-- Too small devices -->
+        
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js"></script>
+        <!-- <script src="./model/word2idx.js"></script>
+        <script src="./model/idx2word.js"></script> -->
+        <script src="lang_model_lstmbidi/word2index.js"></script>
+        <script src="lang_model_lstmbidi/index2word.js"></script>
+        
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- link to js file -->
+        <script src="./js/caption.js"></script>
+
+
+
+
+        <div class="footer">
+
+<center>
+<p >
+<b><font face="Calibri" size="4" color="White"> Mentor</font> </b>
+<br>
+<font face="Calibri" size="4.5" color="White">DR. NEETA VERMA</font><br>
+</p>
+<b><font face="Calibri" size="4" color="White"> Developed By</font> </b>
+<br>
+<font face="Calibri" size="4.5" color="White">TUSHAR KUMAR | SHIVAM UPADHAYAY | TUSHAR CHAUDHARY | SHIVAM CHAUHAN</font><br>
+</p>
+</center>
+</div>
+</div>
+
+
+</center>
+
+
+
+
+</div>
+
+
+
+</body>
+</html>
