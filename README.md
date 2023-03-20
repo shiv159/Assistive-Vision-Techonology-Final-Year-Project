@@ -1,1 +1,6 @@
-# Assistive-Vision-Techonology-Final-Year-Project
+# Assistive-Vision-Techonology
+It provideS accurate and concise descriptions of surroundings. This project achieves this
+challenge using deep learning neural networks. The method generates semantically meaningful and grammatically correct captions
+for the images using information from picture and caption pairings.
+
+![Screenshot 2023-03-21 at 01-20-23 doc (3) pdf](https://user-images.githubusercontent.com/53188725/226450849-60592c68-cd04-4618-a743-1569efdafdd7.png)
