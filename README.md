@@ -1,6 +1,6 @@
 # Assistive-Vision-Techonology
 
-### For deatils read Published [Research Paper](https://www.ijraset.com/fileserve.php?FID=36815).
+### For more deatil read Published [Research Paper](https://www.ijraset.com/fileserve.php?FID=36815).
 
 It provideS accurate and concise descriptions of surroundings. This project achieves this
 challenge using deep learning neural networks. The method generates semantically meaningful and grammatically correct captions
